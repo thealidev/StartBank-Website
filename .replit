@@ -1,0 +1,17 @@
+modules = ["nodejs-20", "python-3.10", "python-3.11", "python-3.12", "python-with-prybar-3.10", "web"]
+run = "pushd index.html;  python3 -m http.server 80; popd;"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "pushd index.html;  python3 -m http.server 80; popd;"]
+
+[[ports]]
+localPort = 80
+externalPort = 80
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+exposeLocalhost = true
